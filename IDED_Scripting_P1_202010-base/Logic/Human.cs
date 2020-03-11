@@ -18,32 +18,51 @@
         
         public virtual bool ChangeClass(EUnitClass newClass)
         {
-            return false;
+            //Para que el soldier y el squire cambien
+            if (UnitClass.Equals(EUnitClass.Soldier) && newClass == EUnitClass.Squire)
+            {
+                return true;
+            }
+            else if (UnitClass.Equals(EUnitClass.Squire) && newClass == EUnitClass.Soldier)
+            {
+                return true;
+            }
+
+            //Para que el ranger y el mage cambien
+            else if (UnitClass.Equals(EUnitClass.Ranger) && newClass == EUnitClass.Mage)
+            {
+                return true;
+            }
+            else if (UnitClass.Equals(EUnitClass.Mage) && newClass == EUnitClass.Ranger)
+            {
+                return true;
+            }
+            else { return false; }
+ 
+            
         }
 
 
         public void Humano(EUnitClass a)
         {
-            if (a is Human)
+            
+            if (a==EUnitClass.Soldier||a==EUnitClass.Mage||a==EUnitClass.Squire||a==EUnitClass.Ranger)
             {
-              
-                
-
-                if ((Defense += Defense * Potential) > 255)
+                if (( Defense * Potential) > 255)
                 {
-                    Defense += Defense * Potential;
+                    Defense = Defense * Potential;
                 }
                 else { Attack = 255; }
 
-                if ((Speed += Speed * Potential) > 255)
+                if ((Speed * Potential) > 255)
                 {
-                    Speed += Speed* Potential;
+                    Speed = Speed* Potential;
                 }
                 else { Attack = 255; }
 
-                if ((Attack += Attack * Potential) > 255)
+                if (( Attack * Potential) > 255)
                 {
-                    Attack += Attack * Potential;
+                    Attack = Attack * Potential;
                 }
                 else { Attack = 255; }
 
